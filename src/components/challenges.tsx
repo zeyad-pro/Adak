@@ -78,7 +78,7 @@ function Challenges() {
     return (
       <div className="mx-2 my-2 md:px-10">
         <div className="flex h-[calc(100vh-265px)] w-full items-center justify-center">
-          <div className="rounded-3xl border border-white/10 bg-white/5 px-8 py-6 text-xl text-muted-foreground backdrop-blur-xl">
+          <div className="rounded-3xl border  px-8 py-6 text-xl text-muted-foreground backdrop-blur-xl">
             (no data found yet)
           </div>
         </div>
