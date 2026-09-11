@@ -73,11 +73,9 @@ export default function AddChallenge() {
 
     localStorage.setItem("challenges", JSON.stringify(updatedChallenges));
 
-    window.dispatchEvent(new Event("storage"));
-
     setTaskName("");
     setDialogOpen(false);
-    window.dispatchEvent(new Event("storage"));
+    window.dispatchEvent(new Event("challengesUpdated"));
   };
 
   return (

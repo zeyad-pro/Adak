@@ -59,11 +59,16 @@ function Challenges() {
   }, []);
 
   useEffect(() => {
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === "challenges") setData(loadChallenges());
-    };
-    window.addEventListener("storage", handleStorageChange);
-    return () => window.removeEventListener("storage", handleStorageChange);
+    const handleUpdate = () => setData(loadChallenges());
+
+    window.addEventListener("challengesUpdated", handleUpdate);
+    window.addEventListener("storage", handleUpdate);
+
+
+   return () => {
+    window.removeEventListener("challengesUpdated", handleUpdate);
+    window.removeEventListener("storage", handleUpdate);
+  };
   }, []);
 
   useEffect(() => {
@@ -78,7 +83,7 @@ function Challenges() {
     return (
       <div className="mx-2 my-2 md:px-10">
         <div className="flex h-[calc(100vh-265px)] w-full items-center justify-center">
-          <div className="rounded-3xl border  px-8 py-6 text-xl text-muted-foreground backdrop-blur-xl">
+          <div className="rounded-3xl  px-8 py-6 text-xl text-muted-foreground">
             (no data found yet)
           </div>
         </div>
